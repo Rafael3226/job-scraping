@@ -1,5 +1,5 @@
 import puppeteer from "puppeteer";
-import { LinkedinScraper } from "./LinkedinSraper";
+import { LinkedinScraper } from "./LinkedinScraper";
 // Or import puppeteer from 'puppeteer-core';
 
 const paramExamp = {
@@ -30,11 +30,12 @@ export async function scraping() {
   const linkedinScraper = new LinkedinScraper(page);
   await linkedinScraper.setup();
   await linkedinScraper.login(LinkedinCredentials);
-  const jobIds = await linkedinScraper.scraping(paramExamp);
+  const jobIds = await linkedinScraper.getJobIds(paramExamp);
+
+  const jobData = await linkedinScraper.getJobData("3999771004");
+  console.log(jobData);
   await browser.close();
-  console.log(jobIds);
   return jobIds;
 }
 
-const jobIds = scraping();
-console.log(jobIds);
+scraping();

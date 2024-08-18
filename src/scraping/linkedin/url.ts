@@ -1,7 +1,6 @@
 export const LINKEDIN_LOGIN_URL = "https://www.linkedin.com/login";
 export const LINKEDIN_JOBS_URL = "https://www.linkedin.com/jobs/search/";
-export const LINKEDIN_JOB =
-  "https://www.linkedin.com/jobs/view/{currentJobId}/";
+export const LINKEDIN_JOB = "https://www.linkedin.com/jobs/view/{jobId}/";
 
 export function getLinkedinJobSearchURL(params: LinkedinSearchParams): string {
   const searchParams = new URLSearchParams();
@@ -9,4 +8,8 @@ export function getLinkedinJobSearchURL(params: LinkedinSearchParams): string {
     searchParams.append(key, value);
   }
   return `${LINKEDIN_JOBS_URL}?${searchParams.toString()}`;
+}
+
+export function jobURL(id: string): string {
+  return LINKEDIN_JOB.replace("{jobId}", id);
 }

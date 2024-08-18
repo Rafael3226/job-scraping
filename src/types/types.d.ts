@@ -12,3 +12,20 @@ interface LinkedinSearchParams {
   refresh?: string;
   start?: string;
 }
+
+interface Company {
+  name: string;
+  image: string;
+  url: string;
+  linkedin: string;
+}
+
+interface Job {
+  company: Company;
+  title: string;
+  location: string;
+  description: string;
+  date: string;
+  linkedin: string;
+  apply: string;
+}
